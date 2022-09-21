@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#" id="form">
+        <label for="uts">UTS : </label>
+            <input type="number" name="uts" id="nuts">
+        <label for="tugas">Tugas : </label>
+            <input type="number" name="tugas" id="ntugas">
+        <label for="uas">UAS : </label>
+            <input type="number" name="uas" id="nuas">
+        <button type="button" id="button">submit</button>
+    </form>
+    <p id="hasil">Nilai Huruf : -</p>
+</body>
+<script>
+    document.getElementById("button").addEventListener("click", function(){
+    let nuas = document.getElementById("nuas").value
+    let nuts = document.getElementById("nuts").value
+    let ntugas = document.getElementById("ntugas").value
+    let hasil = 0.4*ntugas + 0.3*nuas + 0.3*nuts
+    document.getElementById("hasil").innerText = hasil
+    let nilaihuruf = ""
+    if(hasil > 79){
+        nilaihuruf = "A"
+    }
+    else if(hasil > 69){
+        nilaihuruf = "B"
+    }
+    else if(hasil > 49){
+        nilaihuruf = "C"
+    }
+    else if(hasil > 39){
+        nilaihuruf = "D"
+    }else{
+        nilaihuruf = "E"
+    }
+    document.getElementById("hasil").innerText = "Nilai Huruf : " + nilaihuruf
+})
+</script>
+</html>
