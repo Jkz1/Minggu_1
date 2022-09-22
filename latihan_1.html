@@ -5,42 +5,86 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(0, 0, 0);
+        }
+        p{
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <form action="#" id="form">
-        <label for="uts">UTS : </label>
+        <label for="uts"><p>UTS : </p></label>
             <input type="number" name="uts" id="nuts">
-        <label for="tugas">Tugas : </label>
+        <label for="tugas"><p>Tugas : </p></label>
             <input type="number" name="tugas" id="ntugas">
-        <label for="uas">UAS : </label>
+        <label for="uas"><p>UAS : </p></label>
             <input type="number" name="uas" id="nuas">
-        <button type="button" id="button">submit</button>
+        <button type="button" id="button">Submit</button>
     </form>
-    <p id="hasil">Nilai Huruf : -</p>
+    <p id="hasilhuruf">Nilai Huruf : -</p>
+    <br><br><br>
+    <form action="#">
+        <label for="BB"><p>Berat Badan</p></label>
+            <input type="number" name="BB" id = "bb">
+        <label for="TB"><p>Tinggi Badan</p></label>
+            <input type="number" name="TB" id = "tb">
+            <br>
+            <br>
+        <button type="button" id="btn">Submit</button>
+    </form>
+    <p>BMI :<span id="hasil"> - </span></p>
+    <p>Kategori :<span id="kategori"> - </span></p>
 </body>
 <script>
+    let btn = document.getElementById("btn")
+    let bb;
+    let tb;
+    let hasil;
+    let kategori;
+    btn.addEventListener("click", function(){
+        bb = parseFloat(document.getElementById("bb").value)
+        tb = parseFloat(document.getElementById("tb").value)
+        hasil = bb/tb/tb
+        if(hasil > 29){
+            kategori = "Obesitas"
+        } else if (hasil > 23){
+            kategori = "Kelebihan Berat Badan (overweight)"
+        } else if (hasil >= 18.5){
+            kategori = "Normal"
+        } else if (hasil > 14){
+            kategori = "Berat Badan Kurang (underweight)"
+        } else {
+            kategori = "Berat Badan Sangat Kurang"
+        }
+        
+        document.getElementById("kategori").innerText = kategori
+        document.getElementById("hasil").innerText = hasil
+    })
     document.getElementById("button").addEventListener("click", function(){
-    let nuas = document.getElementById("nuas").value
-    let nuts = document.getElementById("nuts").value
-    let ntugas = document.getElementById("ntugas").value
-    let hasil = 0.4*ntugas + 0.3*nuas + 0.3*nuts
-    document.getElementById("hasil").innerText = hasil
-    let nilaihuruf = ""
-    if(hasil > 79){
-        nilaihuruf = "A"
-    }
-    else if(hasil > 69){
-        nilaihuruf = "B"
-    }
-    else if(hasil > 49){
-        nilaihuruf = "C"
-    }
-    else if(hasil > 39){
-        nilaihuruf = "D"
-    }else{
-        nilaihuruf = "E"
-    }
-    document.getElementById("hasil").innerText = "Nilai Huruf : " + nilaihuruf
-})
+        let nuas = document.getElementById("nuas").value
+        let nuts = document.getElementById("nuts").value
+        let ntugas = document.getElementById("ntugas").value
+        let hasilhuruf = 0.4*ntugas + 0.3*nuas + 0.3*nuts
+        document.getElementById("hasilhuruf").innerText = hasilhuruf
+        let nilaihuruf = ""
+        if(hasilhuruf > 79){
+            nilaihuruf = "A"
+        }
+        else if(hasilhuruf > 69){
+            nilaihuruf = "B"
+        }
+        else if(hasilhuruf > 49){
+            nilaihuruf = "C"
+        }
+        else if(hasilhuruf > 39){
+            nilaihuruf = "D"
+        }else{
+            nilaihuruf = "E"
+        }
+        document.getElementById("hasilhuruf").innerText = "Nilai Huruf : " + nilaihuruf
+    })
 </script>
 </html>
